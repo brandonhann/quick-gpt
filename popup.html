@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>QuickGPT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>QuickGPT</h1>
+        <div id="loading" class="hidden">Loading...</div>
+        <div id="result-container">
+            <div id="result"></div>
+            <button id="copy-btn" class="hidden">Copy</button>
+        </div>
+        <div class="input-container">
+            <div>
+                <label for="max_tokens">Max Tokens:</label>
+                <input type="number" id="max_tokens" name="max_tokens" min="1" value="60">
+            </div>
+            <button id="clear">Clear</button>
+        </div>
+        <div class="input-container">
+            <label for="password">API-Key</label>
+            <input type="password" id="password" name="password">
+        </div>
+        <script src="popup.js"></script>
+</body>
+
+</html>
