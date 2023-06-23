@@ -10,8 +10,30 @@ body {
 
 button,
 input,
-label {
+label,
+textarea {
     font-family: 'Poppins', sans-serif;
+}
+
+textarea {
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px;
+    background-color: #3c3c3c;
+    min-height: 50px;
+    word-wrap: break-word;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    resize: none;
+    margin-top: 5px;
+}
+
+
+.prefix-container,
+.suffix-container {
+    font-size: 12px;
+    margin-top: 20px;
 }
 
 .container {
@@ -31,13 +53,15 @@ label {
     border-radius: 5px;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 h1 {
     font-size: 20px;
     margin-bottom: 10px;
-}
-
-#loading {
-    color: #999;
 }
 
 #result-container {
@@ -120,4 +144,23 @@ h1 {
 
 .hidden {
     display: none;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

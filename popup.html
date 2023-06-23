@@ -9,11 +9,23 @@
 
 <body>
     <div class="container">
-        <h1>QuickGPT</h1>
-        <div id="loading" class="hidden">Loading...</div>
+        <div class="header">
+            <h1>QuickGPT</h1>
+            <div id="loading" class="hidden">
+                <div class="loader"></div>
+            </div>
+        </div>
+        <div class="prefix-container">
+            <label for="prefix">Prefix</label>
+            <textarea id="prefix"></textarea>
+        </div>
         <div id="result-container">
             <div id="result"></div>
             <button id="copy-btn" class="hidden">Copy</button>
+        </div>
+        <div class="suffix-container">
+            <label for="suffix">Suffix</label>
+            <textarea id="suffix"></textarea>
         </div>
         <div class="input-container">
             <div>

@@ -4,10 +4,15 @@ chrome.runtime.onInstalled.addListener(function () {
         title: "QuickGPT Search",
         contexts: ["selection"],
     });
+
+    // Set an initial status when the extension is installed
+    chrome.storage.local.set({ status: 'idle', chatGPTResponse: '' });
 });
 
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
     if (info.menuItemId === "quickGPT") {
+        // Update the status when a search is started
+        chrome.storage.local.set({ status: 'loading' });
         chrome.tabs.sendMessage(tab.id, { command: "queryGPT", text: info.selectionText });
     }
 });
@@ -20,5 +25,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             console.log('Got status:', data.status);
             chrome.runtime.sendMessage({ command: "updateGPTResponse", data });
         });
+    } else if (request.command === "prefixChanged" || request.command === "suffixChanged") {
+        // Update the status when the prefix or suffix is changed
+        chrome.storage.local.set({ status: 'idle' });
     }
 });
