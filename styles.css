@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -10,9 +11,17 @@ body {
 
 button,
 input,
-label,
 textarea {
     font-family: 'Poppins', sans-serif;
+}
+
+label {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.prefix-container label,
+.suffix-container label {
+    font-size: 14px;
 }
 
 textarea {
@@ -62,6 +71,7 @@ textarea {
 h1 {
     font-size: 20px;
     margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #result-container {
