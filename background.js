@@ -12,8 +12,9 @@ chrome.runtime.onInstalled.addListener(function () {
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
     if (info.menuItemId === "quickGPT") {
         // Update the status when a search is started
-        chrome.storage.local.set({ status: 'loading' });
-        chrome.tabs.sendMessage(tab.id, { command: "queryGPT", text: info.selectionText });
+        chrome.storage.local.set({ status: 'loading' }, function () {
+            chrome.tabs.sendMessage(tab.id, { command: "queryGPT", text: info.selectionText });
+        });
     }
 });
 

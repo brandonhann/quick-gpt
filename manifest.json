@@ -26,6 +26,8 @@
         "contextMenus",
         "storage",
         "tabs",
+        "webRequest",
+        "*://api.openai.com/*",
         "activeTab",
         "http://*/",
         "https://*/"

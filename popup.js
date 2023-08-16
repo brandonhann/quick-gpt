@@ -29,17 +29,25 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('clear').addEventListener('click', function () {
+        // Clear the result div and reset the extension state
         result.innerHTML = "Highlight text and click 'QuickGPT Search' to get results";
         chrome.storage.local.set({ status: 'idle', chatGPTResponse: '', prefix: '', suffix: '' });
 
         // Clear the prefix and suffix input fields and notify the content script about it
         document.getElementById('prefix').value = '';
         document.getElementById('suffix').value = '';
-
         chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
             chrome.tabs.sendMessage(tabs[0].id, { command: "prefixChanged", prefix: '' });
             chrome.tabs.sendMessage(tabs[0].id, { command: "suffixChanged", suffix: '' });
         });
+
+        // Hide the loading div and show the result div
+        loading.classList.add('hidden');
+        result.classList.remove('hidden');
+        document.getElementById('copy-btn').classList.add('hidden'); // Hide the copy button
+
+        // Manually reset the extension state
+        chrome.runtime.sendMessage({ command: "setStatus" });
     });
 
     document.getElementById('max_tokens').addEventListener('change', function () {
@@ -71,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 result.innerHTML = chatGPTResponse || 'No data';
                 loading.classList.add('hidden');
                 result.classList.remove('hidden');
+                document.getElementById('copy-btn').classList.remove('hidden'); // Show the copy button
             } else {
                 loading.classList.add('hidden');
                 result.innerHTML = "Highlight text and click 'QuickGPT Search' to get results";

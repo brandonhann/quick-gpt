@@ -1,10 +1,7 @@
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
         if (request.command === "queryGPT") {
-            // When search is triggered, set status to 'loading'
-            chrome.storage.local.set({ status: 'loading' }, function () {
-                queryGPT(request.text);
-            });
+            queryGPT(request.text);
         }
     }
 );
@@ -32,7 +29,7 @@ chrome.runtime.onMessage.addListener(
 
 async function queryGPT(text) {
     // Replace with your API key
-    const api_key = "yourapikey";
+    const api_key = "your-api-here";
 
     // Retrieve max_tokens value from storage
     let max_tokens = await new Promise((resolve) => {
